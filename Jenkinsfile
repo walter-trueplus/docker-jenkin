@@ -2,13 +2,14 @@ pipeline {
     agent {
         docker {
             image 'nginx'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
         stage('Something always wrong, but true') {
             steps {
-                sh 'sleep 3;top;service nginx status'
+                sh 'ls -lah'
+                sh 'pwd'
+                sh 'ls -lah /home'
             }
         }
     }
