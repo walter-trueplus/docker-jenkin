@@ -6,5 +6,10 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+	stage('Just list folder structure') {
+	    steps {
+		sh 'ls -lah'
+	    }
+	}
     }
 }
