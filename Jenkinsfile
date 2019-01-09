@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Something always wrong, but true') {
             steps {
-                sh 'sleep 3;service nginx status'
+                sh 'sleep 3;top;service nginx status'
             }
         }
     }
