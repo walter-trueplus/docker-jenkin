@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Something always wrong, but true') {
             steps {
-                sh 'python --version'
-                sh 'ls -lah'
+                sh 'python --version && ls -lah && pwd'
             }
         }
     }
