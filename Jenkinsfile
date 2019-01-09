@@ -1,9 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'nginx'
+        }
+    }
     stages {
         stage('Something always wrong, but true') {
             steps {
-                sh 'pwd; ls -lah /home;sleep 3;service --status-all;service nginx status'
+                sh 'ls -lah'
+                sh 'pwd'
+                sh 'ls -lah /home'
             }
         }
     }
