@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'nginx:stable'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
