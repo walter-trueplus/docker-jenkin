@@ -1,11 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'nginx'
-        }
-    }
+    agent none
     stages {
         stage('Something always wrong, but true') {
+            agent { docker 'nginx' }
             steps {
                 sh 'ls -lah'
                 sh 'pwd'
