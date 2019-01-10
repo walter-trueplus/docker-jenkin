@@ -1,10 +1,9 @@
 pipeline {
-    agent {label 'something like that'}
+    agent any
     stages {
         stage('Something always wrong, but true') {
             agent {
                 docker {
-                    label 'something like that'
                     image 'maven:3-alpine'
                 }
             }
