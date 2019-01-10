@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'httpd'
-        }
-    }
+    agent { docker 'nginx' }
     stages {
         stage('Something always wrong, but true') {
             steps {
