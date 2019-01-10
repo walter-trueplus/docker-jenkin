@@ -4,12 +4,12 @@ pipeline {
         stage('Something always wrong, but true') {
             agent {
                 docker {
-                    image 'maven:3-alpine'
+                    image 'nginx:1.14'
                 }
             }
             steps {
                 sh 'ls -lah'
-                sh 'mvn --version'
+                sh 'nginx --version'
             }
         }
     }
