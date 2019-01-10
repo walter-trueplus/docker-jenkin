@@ -6,7 +6,6 @@ pipeline {
     }
     stages {
         stage('Something always wrong, but true') {
-            agent { docker 'nginx:latest' }
             steps {
                 sh 'ls -lah'
                 sh 'pwd'
