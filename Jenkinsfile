@@ -1,10 +1,16 @@
 pipeline {
-    agent { docker 'richxsl/rhel7' }
+    agent any
     stages {
         stage('Something always wrong, but true') {
+            agent {
+                docker {
+                    label 'something like that'
+                    image 'maven:3-alpine'
+                }
+            }
             steps {
                 sh 'ls -lah'
-                docker ps
+                sh 'mvn --version'
             }
         }
     }
