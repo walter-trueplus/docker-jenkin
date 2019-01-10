@@ -1,5 +1,9 @@
 pipeline {
-    agent none
+    agent {
+        docker {
+            image 'httpd'
+        }
+    }
     stages {
         stage('Something always wrong, but true') {
             agent { docker 'nginx:latest' }
@@ -8,7 +12,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -lah /home'
                 sh 'docker ps -a'
-                sh 'service nginx status'
+                sh 'service apache2 status'
             }
         }
     }
