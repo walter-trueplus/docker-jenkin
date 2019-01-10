@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'something like that'}
     stages {
         stage('Something always wrong, but true') {
             agent {
