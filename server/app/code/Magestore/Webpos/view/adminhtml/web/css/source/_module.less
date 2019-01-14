@@ -1,0 +1,15 @@
+// import the webpos font icon
+@webpos-font-name-path: '@{baseDir}Magestore_Webpos/fonts/icomoon/fonts/icomoon';
+@webpos-font-name: 'icomoon';
+
+.lib-font-face(
+  @family-name: @webpos-font-name,
+  @font-path: @webpos-font-name-path,
+  @font-weight: normal,
+  @font-style: normal
+);
+
+
+// import the less files
+@import 'webpos/_menu.less';
+@import 'webpos/_generals.less';

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright © 2018 Magestore. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- config -->
+    <preference for="Magestore\Webpos\Api\Config\ConfigRepositoryInterface" type="Magestore\Webpos\Model\Config\ConfigRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\SystemConfigInterface" type="Magestore\Webpos\Model\Config\Data\SystemConfig"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\CurrencyInterface" type="Magestore\Webpos\Model\Config\Data\Currency"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\ConfigInterface" type="Magestore\Webpos\Model\Config\Config"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\PriceFormatInterface" type="Magestore\Webpos\Model\Config\Data\PriceFormat"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\GuestCustomerInterface" type="Magestore\Webpos\Model\Config\Data\GuestCustomer"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\CustomerGroupInterface" type="Magestore\Webpos\Model\Config\Data\CustomerGroup"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\ShippingInterface" type="Magestore\Webpos\Model\Config\Data\Shipping"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\PaymentInterface" type="Magestore\Webpos\Model\Config\Data\Payment"/>
+    <preference for="Magestore\Webpos\Api\Data\Config\ProductTaxClassesInterface" type="Magestore\Webpos\Model\Config\Data\ProductTaxClasses"/>
+    <!-- End: config -->
+    <preference for="Magestore\Webpos\Api\Data\Website\WebsiteInformationInterface" type="Magestore\Webpos\Model\Website\WebsiteInformation"/>
+    <preference for="Magestore\Webpos\Api\Website\WebsiteInformationRepositoryInterface" type="Magestore\Webpos\Model\Website\WebsiteInformationRepository"/>
+    <preference for="Magestore\Webpos\Api\Shipping\ShippingMethodRepositoryInterface" type="Magestore\Webpos\Model\Shipping\ShippingMethodRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Shipping\ShippingMethodInterface" type="Magestore\Webpos\Model\Shipping\ShippingMethod"/>
+    <preference for="Magento\Customer\Model\ResourceModel\Customer\Indexer\Collection" type="Magestore\Webpos\Model\ResourceModel\Customer\Indexer\Collection"/>
+    <preference for="Magento\Quote\Model\QuoteRepository\Plugin\AccessChangeQuoteControl" type="Magestore\Webpos\Model\QuoteRepository\Plugin\AccessChangeQuoteControl"/>
+    <!-- end rewrite api controller -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="webpos_location_listing_data_source" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Location\Location\Grid\Collection</item>
+                <item name="webpos_pos_listing_data_source" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Pos\Pos\UiGrid\Collection</item>
+                <item name="webpos_denomination_listing_data_source" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Denomination\Denomination\Grid\Collection</item>
+                <item name="webpos_closed_session_listing_data_source" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Shift\Shift\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magestore\Webpos\Api\Staff\StaffManagementInterface" type="Magestore\Webpos\Model\Staff\StaffManagement" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\Login\LoginResultInterface" type="Magestore\Webpos\Model\Staff\Data\Login\LoginResult" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\Login\PosResultInterface" type="Magestore\Webpos\Model\Staff\Data\Login\PosResult" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\Login\LocationResultInterface" type="Magestore\Webpos\Model\Staff\Data\Login\LocationResult" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\Login\AvailableLocationInterface" type="Magestore\Webpos\Model\Staff\Data\Login\AvailableLocation" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\Login\Location\AddressInterface" type="Magestore\Webpos\Model\Staff\Data\Login\Location\Address" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\SessionInterface" type="Magestore\Webpos\Model\Staff\Session"/>
+    <preference for="Magestore\Webpos\Api\Staff\SessionRepositoryInterface" type="Magestore\Webpos\Model\Staff\SessionRepository" />
+    <preference for="Magestore\Webpos\Api\Data\Staff\SessionSearchResultsInterface" type="Magestore\Webpos\Model\ResourceModel\Staff\Session\Collection"/>
+    <preference for="Magestore\Webpos\Api\Data\Staff\Logout\LogoutResultInterface" type="Magestore\Webpos\Model\Staff\Data\Logout\LogoutResult" />
+
+
+    <preference for="Magestore\Webpos\Api\Data\Pos\PosInterface" type="Magestore\Webpos\Model\Pos\Pos" />
+    <preference for="Magestore\Webpos\Api\Data\Pos\EnterPosInterface" type="Magestore\Webpos\Model\Pos\Pos" />
+    <preference for="Magestore\Webpos\Api\Pos\PosRepositoryInterface" type="Magestore\Webpos\Model\Pos\PosRepository" />
+    <preference for="Magestore\Webpos\Api\Data\Pos\PosSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+
+
+    <!-- Location -->
+    <preference for="Magestore\Webpos\Api\Data\Location\LocationInterface" type="Magestore\Webpos\Model\Location\Location"/>
+    <preference for="Magestore\Webpos\Api\Data\Location\LocationSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Magestore\Webpos\Api\Location\LocationRepositoryInterface" type="Magestore\Webpos\Model\Location\LocationRepository"/>
+    <type name="Magestore\Webpos\Model\ResourceModel\Location\Location\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">webpos_location</argument>
+            <argument name="resourceModel" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Location\Location</argument>
+        </arguments>
+    </type>
+    <!-- /End: Location -->
+
+
+    <!-- Search Criteria -->
+    <preference for="Magestore\Webpos\Api\SearchCriteriaInterface" type="Magestore\Webpos\Model\SearchCriteria" />
+    <!-- /Search Criteria -->
+
+    <!-- inventory api -->
+    <preference for="Magestore\Webpos\Api\Inventory\StockItemRepositoryInterface" type="Magestore\Webpos\Model\Inventory\StockItemRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Inventory\StockItemInterface" type="Magestore\Webpos\Model\Inventory\Stock\Item"/>
+    <preference for="Magestore\Webpos\Api\Data\Inventory\AvailableQtyInterface" type="Magestore\Webpos\Model\Inventory\Stock\AvailableQty"/>
+    <preference for="Magestore\Webpos\Api\Data\Inventory\ExternalStockInterface" type="Magestore\Webpos\Model\Inventory\Stock\ExtarnalStock"/>
+    <!-- end inventory api -->
+    <!-- Category api -->
+    <preference for="Magestore\Webpos\Api\Data\Catalog\CategoryInterface" type="Magestore\Webpos\Model\Catalog\Category"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\CategorySearchResultsInterface" type="Magestore\Webpos\Model\Catalog\CategorySearchResults"/>
+    <preference for="Magestore\Webpos\Api\Catalog\CategoryRepositoryInterface" type="Magestore\Webpos\Model\Catalog\CategoryRepository"/>
+    <!-- End: Category api -->
+    <!-- product api -->
+    <preference for="Magestore\Webpos\Api\Catalog\ProductRepositoryInterface" type="Magestore\Webpos\Model\Catalog\ProductRepository"/>
+    <preference for="Magestore\Webpos\Api\Catalog\ProductSearchRepositoryInterface" type="Magestore\Webpos\Model\Catalog\ProductSearchRepository" />
+    <preference for="Magestore\Webpos\Api\Data\Catalog\ProductInterface" type="Magestore\Webpos\Model\Catalog\Product"/>
+    <!-- end product api -->
+
+    <!-- product options -->
+    <preference for="Magestore\Webpos\Api\Catalog\ProductOptionsRepositoryInterface" type="Magestore\Webpos\Model\Catalog\ProductOptionsRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\ProductOptionsInterface" type="Magestore\Webpos\Model\Catalog\Option\ProductOptions"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\ConfigOptionsInterface" type="Magestore\Webpos\Model\Catalog\Option\ConfigOptions"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\GiftCardPriceOptionsInterface" type="Magestore\Webpos\Model\Catalog\Option\GiftCardPriceOptions"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\GiftCardTemplateInterface" type="Magestore\Webpos\Model\Catalog\Option\GiftCardTemplate"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\Config\Attribute\OptionInterface" type="Magestore\Webpos\Model\Catalog\Option\Config\Attribute\Option"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\Config\Attribute\Option\ProductInterface" type="Magestore\Webpos\Model\Catalog\Option\Config\Attribute\Option\Product"/>
+
+    <preference for="Magestore\Webpos\Api\Catalog\SwatchOptionRepositoryInterface" type="Magestore\Webpos\Model\Catalog\SwatchOptionRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\SwatchOptionSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\SwatchOptionInterface" type="Magestore\Webpos\Model\Catalog\Option\SwatchOption"/>
+    <preference for="Magestore\Webpos\Api\Data\Catalog\Option\Swatch\SwatchInterface" type="Magestore\Webpos\Model\Catalog\Option\Swatch\Swatch"/>
+
+    <preference for="Magestore\Webpos\Api\Catalog\Attribute\AttributesRepositoryInterface" type="Magestore\Webpos\Model\Catalog\Attribute\AttributesRepository"/>
+    <!-- end product options -->
+
+    <preference for="Magestore\Webpos\Api\Data\Payment\PaymentInterface" type="Magestore\Webpos\Model\Payment\Payment"/>
+    <preference for="Magestore\Webpos\Api\Payment\PaymentRepositoryInterface" type="Magestore\Webpos\Model\Payment\PaymentRepository"/>
+
+    <!-- checkout api -->
+    <preference for="Magestore\Webpos\Api\Checkout\CheckoutRepositoryInterface" type="Magestore\Webpos\Model\Checkout\CheckoutRepository"/>
+    <!-- end: checkout api -->
+
+    <!-- order -->
+    <preference for="Magestore\Webpos\Api\Data\Sales\OrderSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Magestore\Webpos\Api\Sales\OrderRepositoryInterface" type="Magestore\Webpos\Model\Sales\OrderRepository"/>
+    <preference for="Magestore\Webpos\Api\Sales\OrderSearchRepositoryInterface" type="Magestore\Webpos\Model\Sales\OrderSearchRepository"/>
+    <preference for="Magestore\Webpos\Api\Sales\Order\InvoiceRepositoryInterface" type="Magestore\Webpos\Model\Sales\Order\InvoiceRepository"/>
+    <preference for="Magestore\Webpos\Api\Sales\Order\InvoiceManagementInterface" type="Magestore\Webpos\Model\Sales\Order\InvoiceManagement"/>
+    <preference for="Magestore\Webpos\Api\Sales\Order\CreditmemoRepositoryInterface" type="Magestore\Webpos\Model\Sales\Order\CreditmemoRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Sales\Order\CreditmemoInterface" type="Magestore\Webpos\Model\Sales\Order\Creditmemo"/>
+    <preference for="Magestore\Webpos\Api\Data\Sales\Order\Creditmemo\ItemInterface" type="Magestore\Webpos\Model\Sales\Order\Creditmemo\Item"/>
+    <preference for="Magestore\Webpos\Api\Sales\Order\StatusRepositoryInterface" type="Magestore\Webpos\Model\Sales\Order\StatusRepository"/>
+    <!-- end order -->
+
+    <!-- shipment -->
+    <preference for="Magestore\Webpos\Api\Sales\Order\ShipmentRepositoryInterface" type="Magestore\Webpos\Model\Sales\Order\ShipmentRepository"/>
+    <!-- end shipment -->
+
+    <!-- place order -->
+    <preference for="Magestore\Webpos\Api\Data\Checkout\OrderInterface" type="Magestore\Webpos\Model\Checkout\Order"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\Order\ItemInterface" type="Magestore\Webpos\Model\Checkout\Order\Item"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\Order\AddressInterface" type="Magestore\Webpos\Model\Checkout\Order\Address"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\Order\PaymentInterface" type="Magestore\Webpos\Model\Checkout\Order\Payment"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\Order\CommentInterface" type="Magestore\Webpos\Model\Checkout\Order\Comment"/>
+    <!-- end place order -->
+
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Info">
+        <plugin name="changeOrderInfo" type="Magestore\Webpos\Plugin\Block\Adminhtml\Order\View\Info" sortOrder="1" />
+    </type>
+    <!-- start modify custom discount total -->
+    <type name="Magento\Sales\Block\Order\Totals">
+        <plugin name="webpos_change_custom_discount_order_totals_frontend_view" type="Magestore\Webpos\Plugin\Block\Order\Totals" sortOrder="1" disabled="false"/>
+    </type>
+    <!--end modify custom discount totals-->
+    <preference for="Magestore\Webpos\Api\Tax\TaxRateRepositoryInterface" type="Magestore\Webpos\Model\Tax\TaxRateRepository"/>
+    <preference for="Magestore\Webpos\Api\Tax\TaxClassRepositoryInterface" type="Magestore\Webpos\Model\Tax\TaxClassRepository"/>
+    <preference for="Magestore\Webpos\Api\Tax\TaxRuleRepositoryInterface" type="Magestore\Webpos\Model\Tax\TaxRuleRepository"/>
+
+    <preference for="Magestore\Webpos\Api\Data\Customer\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Magestore\Webpos\Api\Customer\CustomerRepositoryInterface" type="Magestore\Webpos\Model\Customer\CustomerRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Customer\CustomerInterface" type="Magestore\Webpos\Model\Customer\Data\Customer"/>
+    <preference for="Magento\Customer\Model\Data\Customer" type="Magestore\Webpos\Model\Customer\Data\Customer"/>
+
+    <!-- Rewardpoint Storecredit -->
+    <preference for="Magestore\Webpos\Api\Integration\LoyaltyRepositoryInterface" type="Magestore\Webpos\Model\Integration\LoyaltyRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Integration\Rewardpoints\RateInterface" type="Magestore\Webpos\Model\Integration\Data\Rewardpoints\Rate"/>
+    <!-- End Rewardpoint Storecredit -->
+
+    <!-- Quote -->
+    <preference for="Magestore\Webpos\Api\Data\Checkout\QuoteInterface" type="Magestore\Webpos\Model\Checkout\Quote"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\Quote\AddressInterface" type="Magestore\Webpos\Model\Checkout\Quote\Address"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\Quote\ItemInterface" type="Magestore\Webpos\Model\Checkout\Quote\Item"/>
+    <!-- End - Quote -->
+
+    <!--Check Coupon-->
+    <preference for="Magestore\Webpos\Api\Checkout\CouponManagementInterface" type="Magestore\Webpos\Model\Checkout\CouponManagement"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\RuleInterface" type="Magestore\Webpos\Model\Checkout\Data\Rule"/>
+    <!-- End Check Coupon-->
+
+    <preference for="Magestore\Webpos\Api\Data\Country\CountryInterface" type="Magestore\Webpos\Model\Country\Country"/>
+    <preference for="Magestore\Webpos\Api\Data\Country\RegionInterface" type="Magestore\Webpos\Model\Country\Region"/>
+    <preference for="Magestore\Webpos\Api\Country\CountryRepositoryInterface" type="Magestore\Webpos\Model\Country\CountryRepository"/>
+
+    <!-- Search Product on POS -->
+    <virtualType name="rowsSearchFlatTableBuilder" type="Magestore\Webpos\Model\Indexer\Product\FlatTableBuilder">
+        <arguments>
+            <argument name="tableData" xsi:type="object">Magestore\Webpos\Model\Indexer\Product\Action\Rows\TableData</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magestore\Webpos\Model\Indexer\Product\Action\Rows">
+        <arguments>
+            <argument name="flatTableBuilder" xsi:type="object">rowsSearchFlatTableBuilder</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Store\Model\ResourceModel\Store">
+        <plugin name="webposSearchProductIndexerStore" type="Magestore\Webpos\Model\Indexer\Product\Plugin\Store" />
+    </type>
+    <type name="Magento\Store\Model\ResourceModel\Group">
+        <plugin name="webposSearchProductIndexerStoreGroup" type="Magestore\Webpos\Model\Indexer\Product\Plugin\StoreGroup" />
+    </type>
+    <!-- /Search Product on POS -->
+
+    <preference for="Magestore\Webpos\Api\Data\Log\ProductDeletedInterface" type="Magestore\Webpos\Model\Log\ProductDeleted"/>
+    <preference for="Magestore\Webpos\Api\Data\Log\CustomerDeletedInterface" type="Magestore\Webpos\Model\Log\CustomerDeleted"/>
+    <preference for="Magestore\Webpos\Api\Data\Log\OrderDeletedInterface" type="Magestore\Webpos\Model\Log\OrderDeleted"/>
+    <preference for="Magestore\Webpos\Api\Log\ProductDeletedRepositoryInterface" type="Magestore\Webpos\Model\Log\ProductDeletedRepository"/>
+    <preference for="Magestore\Webpos\Api\Log\CustomerDeletedRepositoryInterface" type="Magestore\Webpos\Model\Log\CustomerDeletedRepository"/>
+    <preference for="Magestore\Webpos\Api\Log\OrderDeletedRepositoryInterface" type="Magestore\Webpos\Model\Log\OrderDeletedRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Log\DataLogResultsInterface" type="Magestore\Webpos\Model\Log\DataLogResults"/>
+    <preference for="Magestore\Webpos\Api\Data\Log\DataLogStringResultsInterface" type="Magestore\Webpos\Model\Log\DataLogResults"/>
+    <preference for="Magestore\Webpos\Api\Log\DataLogRepositoryInterface" type="Magestore\Webpos\Model\Log\DataLogRepository"/>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="pos_fulfill_online" xsi:type="string">sales_order.pos_fulfill_online</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- start credit memo -->
+    <virtualType name="CreditmemoGridAggregator">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="pos_location_id" xsi:type="string">sales_creditmemo.pos_location_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- end credit memo -->
+    <!-- Denomination api -->
+    <preference for="Magestore\Webpos\Api\Denomination\DenominationRepositoryInterface" type="Magestore\Webpos\Model\Denomination\DenominationRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Denomination\DenominationInterface" type="Magestore\Webpos\Model\Denomination\Denomination"/>
+    <preference for="Magestore\Webpos\Api\Data\Denomination\DenominationSearchResultsInterface" type="Magestore\Webpos\Model\ResourceModel\Denomination\Denomination\Collection"/>
+    <!-- end Denomination api -->
+    <type name="Magestore\Webpos\Model\ResourceModel\Denomination\Denomination\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">webpos_cash_denomination</argument>
+            <argument name="resourceModel" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Denomination\Denomination</argument>
+        </arguments>
+    </type>
+    <!-- shift api -->
+    <preference for="Magestore\Webpos\Api\Shift\ShiftRepositoryInterface" type="Magestore\Webpos\Model\Shift\ShiftRepository"/>
+    <preference for="Magestore\Webpos\Api\Shift\CashTransactionRepositoryInterface" type="Magestore\Webpos\Model\Shift\CashTransactionRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Shift\ShiftInterface" type="Magestore\Webpos\Model\Shift\Shift"/>
+    <preference for="Magestore\Webpos\Api\Data\Shift\CashTransactionInterface" type="Magestore\Webpos\Model\Shift\CashTransaction"/>
+    <preference for="Magestore\Webpos\Api\Data\Shift\ShiftSearchResultsInterface" type="Magestore\Webpos\Model\ResourceModel\Shift\Shift\Collection"/>
+    <!-- end of shift api -->
+
+    <!-- modify \Magento\CatalogInventory\Model\Stock\Item -->
+    <type name="Magento\CatalogInventory\Model\Stock\Item">
+        <plugin name="webpos_model_cataloginventory_stock_item" type="Magestore\Webpos\Plugin\CatalogInventory\Model\Stock\Item" sortOrder="1" disabled="false"/>
+    </type>
+    <!-- shift api -->
+
+    <!-- catalog rule -->
+    <preference for="Magestore\Webpos\Api\CatalogRule\Product\PriceRepositoryInterface" type="Magestore\Webpos\Model\CatalogRule\Product\PriceRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\CatalogRule\Product\PriceInterface" type="Magestore\Webpos\Model\CatalogRule\Product\Price"/>
+    <preference for="Magestore\Webpos\Api\Data\CatalogRule\Product\PriceSearchResultsInterface" type="Magestore\Webpos\Model\ResourceModel\CatalogRule\Product\Price\Collection"/>
+    <preference for="Magestore\Webpos\Api\Data\CatalogRule\Product\PriceIdsSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <!-- end of catalog rule -->
+
+    <!-- giftcard -->
+    <preference for="Magestore\Webpos\Api\Data\Integration\Giftcard\GiftcardRefundRequestInterface" type="Magestore\Webpos\Model\Integration\Data\Giftcard\GiftcardRefundRequest"/>
+    <preference for="Magestore\Webpos\Api\Integration\GiftcardRepositoryInterface" type="Magestore\Webpos\Model\Integration\GiftcardRepository"/>
+    <preference for="Magestore\Webpos\Api\Integration\GiftcardManagementInterface" type="Magestore\Webpos\Model\Integration\GiftcardManagement"/>
+    <preference for="Magestore\Webpos\Api\Data\Integration\Giftcard\GiftcardResponseInterface" type="Magestore\Webpos\Model\Integration\Data\Giftcard\GiftcardResponse"/>
+    <preference for="Magestore\Webpos\Api\Data\Integration\Giftcard\GiftcardInterface" type="Magestore\Webpos\Model\Integration\Data\Giftcard\Giftcard"/>
+    <!-- End - Gift card -->
+    <type name="Magento\Sales\Model\Order\Address\Validator">
+        <plugin name="validator_guest_address" type="Magestore\Webpos\Plugin\Order\Address\Validator" />
+    </type>
+
+    <!--Remove external stock if IM is not installed-->
+    <type name="Magestore\Appadmin\Model\Staff\Acl\AclResource\Provider">
+        <plugin name="removeCheckExternalStock" type="Magestore\Webpos\Plugin\Appadmin\Model\Staff\Acl\AclResource\Provider" sortOrder="1" />
+    </type>
+    <!--End remove external stock if IM is not installed-->
+
+    <preference for="Magento\Sales\Model\ResourceModel\Order\Plugin\Authorization" type="Magestore\Webpos\Model\Sales\ResourceModel\Order\Plugin\Authorization"/>
+
+    <!-- deploy pos app after run deploy:content -->
+    <type name="Magento\Deploy\Service\DeployStaticContent">
+        <plugin name="webpos_deploy_static_content" type="Magestore\Webpos\Plugin\Service\DeployStaticContent" />
+    </type>
+    <type name="Magento\Deploy\Model\DeployManager">
+        <plugin name="webpos_deploy_manager" type="Magestore\Webpos\Plugin\Service\DeployManager" />
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="webposCommand" xsi:type="object">Magestore\Webpos\Console\Command\WebposCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magestore\Webpos\Api\Console\WebposDeployInterface" type="Magestore\Webpos\Model\Deploy\DeployService" />
+
+    <type name="Magento\Integration\Helper\Data">
+        <plugin name="acl-intergration-data" type="Magestore\Webpos\Plugin\Integration\Data" sortOrder="100" />
+    </type>
+</config>
