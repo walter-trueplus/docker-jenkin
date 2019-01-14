@@ -4,7 +4,7 @@ pipeline {
         stage('Something always wrong, but true') {
             agent {
                 docker {
-                    image 'marstrueplus/apache2-php7.0.14:v1'
+                    image 'marstrueplus/m2_apache2-php7.0.14:v1'
                 }
             }
             steps {
