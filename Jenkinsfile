@@ -8,9 +8,11 @@ pipeline {
                 }
             }
             steps {
-                sh 'ls -lah'
-                sh 'apache2 -V'
+                sh 'ls -lah /'
+                sh 'pwd'
                 sh 'ls -lah /home'
+                sh 'apache2 -V'
+                sh 'php -v'
             }
         }
     }
