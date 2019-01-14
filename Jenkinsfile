@@ -4,12 +4,13 @@ pipeline {
         stage('Something always wrong, but true') {
             agent {
                 docker {
-                    image 'nginx:1.14'
+                    image 'httpd'
                 }
             }
             steps {
                 sh 'ls -lah'
-                sh 'nginx -V'
+                sh 'apache2 -V'
+                sh 'ls -lah /home'
             }
         }
     }
